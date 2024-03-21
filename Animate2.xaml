@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:HelloMaui1.ViewModels"
+             x:Class="HelloMaui1.Animate2"
+             Title="Animate2">
+    
+    
+	<ContentPage.BindingContext>
+		<ViewModels:Animate2ViewModel/>
+	</ContentPage.BindingContext>
+    
+    
+    <VerticalStackLayout>
+        
+        <BoxView x:Name="box" Color="Aqua" WidthRequest="150" HeightRequest="150" />
+
+        <Switch Margin="0,20,0,0" IsToggled="{Binding Toggled}" />
+        
+    </VerticalStackLayout>
+</ContentPage>

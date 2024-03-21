@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿//using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace HelloMaui1
 {
@@ -15,8 +16,11 @@ namespace HelloMaui1
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            //For later use (animation... but finally not used for 
+            //builder.UseMauiCommunityToolkit();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

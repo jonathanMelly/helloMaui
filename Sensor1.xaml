@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:HelloMaui1.ViewModels"
+             x:Class="HelloMaui1.Sensor1"
+             Title="Sensor1">
+    
+    
+	<ContentPage.BindingContext>
+		<ViewModels:SensorViewModel/>
+	</ContentPage.BindingContext>
+    
+    
+    <VerticalStackLayout>
+        <Frame BorderColor="Red">
+            <StackLayout>
+            <Label 
+                Text="{Binding SensorValue}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Button Text="toggle" Command="{Binding EnableCommand}" />
+
+            <BoxView Color="{Binding CancelColor}" IsVisible="{Binding Threshold}" HeightRequest="200" WidthRequest="200" />
+
+            <Slider Value="{Binding Threshold}" Minimum="-10" Maximum="10"  />
+            <Label Text="{Binding Threshold}" />
+
+            <Label Margin="0,30,0,0" Text="{Binding Speed}" />
+            </StackLayout>
+        </Frame>
+        <Frame BorderColor="Green">
+            <StackLayout>
+            <Switch IsToggled="{Binding Toggled}" />
+            <BoxView Color="{Binding ShakeColor}" WidthRequest="150" HeightRequest="150" />
+            </StackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

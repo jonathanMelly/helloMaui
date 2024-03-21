@@ -4,9 +4,65 @@
              x:Class="HelloMaui1.Layout"
              Title="Layout">
     <VerticalStackLayout>
-        <Label 
-            Text="LEFT EYE"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" BackgroundColor="Beige" />
+        <FlexLayout Margin="0,0,0,10" JustifyContent="SpaceAround">
+
+            <!-- Oeil gauche -->
+            <BoxView HeightRequest="100" WidthRequest="150" Color="Green"  />
+
+            <!-- Oeil droit -->
+            <Label Text="RIGHT EYE" WidthRequest="150" HeightRequest="100"
+                     VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                     BackgroundColor="Beige" />
+        </FlexLayout>
+
+        <Grid RowSpacing="5" ColumnSpacing="5" Margin="3,0,3,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Dents du haut -->
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="0" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="1" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="2" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="3" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="4" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="5" />
+            <BoxView Color="LightGray" Grid.Row="0" Grid.Column="6" />
+
+            <!-- Dents du bas -->
+            <BoxView Color="LightGray" Grid.Row="1" />
+            <BoxView Color="LightGray" Grid.Row="1" Grid.Column="1" />
+            <BoxView Color="LightGray" Grid.Row="1" Grid.Column="2" />
+
+            <!-- dent cassée -->
+            <Grid Grid.Row="1" Grid.Column="3" ColumnSpacing="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <BoxView Color="LightSlateGray" Grid.Row="0" />
+                <BoxView Color="LightSlateGray" Grid.Row="0" Grid.Column="1" />
+            </Grid>
+
+            <!-- Reste des dents du bas -->
+            <BoxView Color="LightGray" Grid.Row="1" Grid.Column="4" />
+            <BoxView Color="LightGray" Grid.Row="1" Grid.Column="5" />
+            <BoxView Color="LightGray" Grid.Row="1" Grid.Column="6" />
+
+        </Grid>
+        
     </VerticalStackLayout>
 </ContentPage>

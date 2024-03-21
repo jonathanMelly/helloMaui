@@ -1,8 +1,8 @@
 namespace HelloMaui1;
 
-public partial class Layout : ContentPage
+public partial class aXAML : ContentPage
 {
-    public Layout()
+    public aXAML()
     {
         InitializeComponent();
     }

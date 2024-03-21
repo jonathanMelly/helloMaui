@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloMaui1.Crud"
+             xmlns:viewModels="clr-namespace:HelloMaui1.ViewModels"
+             Title="Crud">
+
+    <ContentPage.BindingContext>
+        <viewModels:CrudViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <Label 
+            Text="CRUD par l’exemple : liste de voeux"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" />
+
+        <HorizontalStackLayout Spacing="10" Padding="10" >
+            <Label Text="Faites un voeu:" VerticalTextAlignment="Center" />
+            <Entry Margin="5,0,0,0" x:Name="wishEntry" MinimumWidthRequest="300" />
+            <Button BorderColor="AliceBlue" 
+                    BorderWidth="5" 
+                    Margin="0,5,0,0" 
+                    Text="Ajouter" 
+                    Command="{Binding AddWishCommand}" 
+                    CommandParameter="{Binding Source={x:Reference wishEntry},Path=Text}" 
+                    MaximumWidthRequest="300">
+            </Button>
+        </HorizontalStackLayout>
+
+        <Label Text="Contenu de la lampe magique" FontSize="Subtitle" HorizontalTextAlignment="Center" Margin="0,20,0,0" />
+        <Border Margin="15,0,15,0">
+            <ListView Margin="0,5,0,0" ItemsSource="{Binding Wishes}" />
+        </Border>
+
+    </VerticalStackLayout>
+</ContentPage>

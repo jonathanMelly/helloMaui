@@ -7,14 +7,112 @@
     Shell.FlyoutBehavior="Disabled"
     Title="HelloMaui1">
 
-    <ShellContent
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.ForegroundColor" Value="AliceBlue" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Tab Title="Home">
+        <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    </Tab>
 
-    <ShellContent
-    Title="Layout"
-    ContentTemplate="{DataTemplate local:Layout}"
-    Route="Layout" />
+    <Tab Title="Layout">
+        <ShellContent 
+            Title="Layout"
+            ContentTemplate="{DataTemplate local:Layout}"
+            Route="Layout" />
+    </Tab>
+
+    <Tab Title="Page1">
+        <ShellContent 
+        Title="Page1"
+        ContentTemplate="{DataTemplate local:NewPage1}"
+        Route="Page1" />
+
+    </Tab>
+
+    <Tab Title="Mvvm1">
+        <ShellContent 
+     Title="Mvvm1"
+     ContentTemplate="{DataTemplate local:Mvvm1}"
+     Route="Mvvm1" />
+    </Tab>
+
+    <Tab Title="Mvvm1First">
+        <ShellContent 
+            Title="Mvvm1First"
+            ContentTemplate="{DataTemplate local:Mvvm1First}"
+            Route="Mvvm1First" />
+
+    </Tab>
+
+    <Tab Title="Crud">
+        <ShellContent 
+        Title="Crud"
+        ContentTemplate="{DataTemplate local:Crud}"
+        Route="Crud" />
+
+    </Tab>
+
+    <Tab Title="Crud2">
+        <ShellContent 
+    Title="Crud2"
+    ContentTemplate="{DataTemplate local:Crud2}"
+    Route="Crud2" />
+    </Tab>
+
+    <Tab Title="Crud2Swipe">
+        <ShellContent 
+Title="Crud2swipe"
+ContentTemplate="{DataTemplate local:Crud2Swipe}"
+Route="Crud2Swipe" />
+    </Tab>
+
+    <Tab Title="aXAML">
+            <ShellContent 
+Title="aXAML"
+ContentTemplate="{DataTemplate local:aXAML}"
+Route="aXAML" />
+
+        </Tab>
+
+    <Tab Title="bugShellnav">
+        <ShellContent 
+Title="bugShellNav"
+ContentTemplate="{DataTemplate local:BugShellNav}"
+Route="bugShellNav" />
+
+    </Tab>
+
+    <Tab Title="anim1">
+        <ShellContent 
+Title="anim1"
+ContentTemplate="{DataTemplate local:Animate1}"
+Route="anim1" />
+    </Tab>
+
+    <Tab Title="anim2">
+            <ShellContent 
+Title="anim2"
+ContentTemplate="{DataTemplate local:Animate2}"
+Route="anim2" />
+
+        </Tab>
+
+ 
+
+    <Tab Title="sensor">
+        <ShellContent 
+Title="sensor"
+ContentTemplate="{DataTemplate local:Sensor1}"
+Route="sensor" />
+
+    </Tab>
 
 </Shell>
