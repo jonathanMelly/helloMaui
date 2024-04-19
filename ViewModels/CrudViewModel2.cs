@@ -1,5 +1,4 @@
-﻿using Android.Content;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HelloMaui1.Models;
 using HelloMaui1.Services;
@@ -64,7 +63,7 @@ namespace HelloMaui1.ViewModels
             Trace.WriteLine($"Editing {wish}");
 
             //Affiche un popup pour demander la modification
-            ///!\ Court-circuite MVVM mais toléré pour ne pas ajouter plus de complexité pour l’instant/!\
+            // /!\ Court-circuite MVVM mais toléré pour ne pas ajouter plus de complexité pour l’instant/!\
             string updatedDefinition = await Shell.Current.DisplayPromptAsync(title: "Modifier ", message: "", placeholder: wish.Definition);
 
             //Si l’utilisateur n’appuie pas sur Cancel

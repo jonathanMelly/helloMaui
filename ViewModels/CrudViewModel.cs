@@ -10,7 +10,7 @@ namespace HelloMaui1.ViewModels
         private ObservableCollection<string> wishes = new() { "décrocher la lune", "voler dans les airs" };
 
         [RelayCommand]
-        private void AddWish(string wish)
+        public void AddWish(string wish)
         {
             Wishes.Add(wish);
         }

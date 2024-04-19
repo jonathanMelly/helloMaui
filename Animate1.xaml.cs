@@ -1,4 +1,3 @@
-using AndroidX.Lifecycle;
 using HelloMaui1.ViewModels;
 
 namespace HelloMaui1;

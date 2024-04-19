@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:HelloMaui1.ViewModels"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
              x:Class="HelloMaui1.Animate2"
              Title="Animate2">
     
@@ -11,11 +12,37 @@
 	</ContentPage.BindingContext>
     
     
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="10">
         
-        <BoxView x:Name="box" Color="Aqua" WidthRequest="150" HeightRequest="150" />
+        <BoxView Margin="0,30,0,0" x:Name="box" Color="Aqua" WidthRequest="150" HeightRequest="150" />
+        
+        <!-- switch de rotation -->
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,25,0,0">
+            <Label Text="{Binding Label}" VerticalTextAlignment="Center" />
+            <Switch IsToggled="{Binding Toggled}" />
+        </HorizontalStackLayout>
+        
+        <!-- déplacement avec les boutons-->
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,25,0,0">
+            <Button Text="&lt;&lt;" Command="{Binding MoveBoxCommand}">
+                <Button.CommandParameter>
+                    <s:Int32>-1</s:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button Text=">>" Margin="10,0,0,0" Command="{Binding MoveBoxCommand}"> 
+                <Button.CommandParameter>
+                    <s:Int32>+1</s:Int32>
+                </Button.CommandParameter>
+            </Button>
+        </HorizontalStackLayout>
+        
+        <!-- ajustement de la vitesse -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="{Binding Speed,StringFormat='Speed \{0\}'}" />
+            <Slider WidthRequest="150" Value="{Binding Speed}" Minimum="1" Maximum="50" />
+        </StackLayout>
 
-        <Switch Margin="0,20,0,0" IsToggled="{Binding Toggled}" />
-        
     </VerticalStackLayout>
 </ContentPage>
+    
+    

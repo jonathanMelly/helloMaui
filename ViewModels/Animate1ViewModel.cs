@@ -21,7 +21,10 @@ namespace HelloMaui1.ViewModels
         private async Task Animate()
         {
             Text = "";
-            await RotateElement?.Invoke(frontSide);
+            if(RotateElement!=null) {
+                await RotateElement.Invoke(frontSide);
+            }
+            
             //RotateElement?.Invoke(frontSide);
             frontSide = !frontSide;
 

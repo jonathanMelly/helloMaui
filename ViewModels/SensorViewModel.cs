@@ -15,6 +15,13 @@ namespace HelloMaui1.ViewModels
         private string? sensorValue;
 
         [ObservableProperty]
+        private bool enabled=false;
+
+        [ObservableProperty]
+        private bool disabled = false;
+
+        #region advanced2
+        [ObservableProperty]
         private bool cancel;
 
         [ObservableProperty]
@@ -24,7 +31,7 @@ namespace HelloMaui1.ViewModels
         private float threshold;
 
         [ObservableProperty]
-        private double speed;
+        private double acceleration;
 
         [ObservableProperty]
         private bool toggled;
@@ -33,15 +40,15 @@ namespace HelloMaui1.ViewModels
         partial void OnToggledChanged(bool  value)
         {
             ToggleShake();
-            
         }
+        
 
-
-
-        Stopwatch stopwatch=new();
+        Stopwatch stopwatch =new();
 
         [ObservableProperty]
         private string shakeColor = "black";
+
+        #endregion
 
         [RelayCommand]
         private void Enable()
@@ -52,13 +59,19 @@ namespace HelloMaui1.ViewModels
                 {
                     // Turn on accelerometer
                     Accelerometer.Default.ReadingChanged += Accelerometer_ReadingChanged;
-                    Accelerometer.Default.Start(SensorSpeed.UI);
+
+                    Accelerometer.Default.Start(SensorSpeed.Default);
+
+                    Enabled = true;
+                    Disabled = false;
                 }
                 else
                 {
                     // Turn off accelerometer
                     Accelerometer.Default.Stop();
                     Accelerometer.Default.ReadingChanged -= Accelerometer_ReadingChanged;
+                    Enabled = false;
+                    Disabled=true;
                 }
             }
         }
@@ -66,9 +79,10 @@ namespace HelloMaui1.ViewModels
         private void Accelerometer_ReadingChanged(object? sender, AccelerometerChangedEventArgs e)
         {
             SensorValue = e.Reading.ToString();
+            #region advanced
             var data = e.Reading.Acceleration.Y;
-            Speed = Math.Sqrt(data * data);
-            var thresholdPassed = Speed  >= Threshold;
+            Acceleration = Math.Sqrt(data * data);
+            var thresholdPassed = Acceleration >= Threshold;
 
             if(thresholdPassed)
             {
@@ -92,18 +106,17 @@ namespace HelloMaui1.ViewModels
                 Cancel = false;
                 stopwatch.Stop();
             }
+            #endregion
         }
 
 
         //To simulate : adb emu sensor set acceleration 0:50:0 && timeout 1 && adb emu sensor set acceleration 0:0:0
-        [RelayCommand]
         private void ToggleShake()
         {
             if (Accelerometer.Default.IsSupported)
             {
                 if (!Accelerometer.Default.IsMonitoring)
                 {
-                    // Turn on accelerometer
                     Accelerometer.Default.ShakeDetected += Accelerometer_ShakeDetected;
                     Accelerometer.Default.Start(SensorSpeed.Default);
                 }
@@ -113,20 +126,21 @@ namespace HelloMaui1.ViewModels
                     Accelerometer.Default.Stop();
                     Accelerometer.Default.ShakeDetected -= Accelerometer_ShakeDetected;
                     ShakeColor = "black";
-
                 }
             }
         }
 
-        private void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        private void Accelerometer_ShakeDetected(object? sender, EventArgs e)
         {
+            #region comments
             // Update UI Label with a "shaked detected" notice, in a randomized color
             //ShakeLabel.TextColor = new Color(Random.Shared.Next(256), Random.Shared.Next(256), Random.Shared.Next(256));
             //ShakeLabel.Text = $"Shake detected";
+            #endregion
             ShakeColor = "red";
-
-
         }
+
+        /* used for exercices / DOC
 
         private async void ConcurrentAwareMethod0()
         {
@@ -151,5 +165,7 @@ namespace HelloMaui1.ViewModels
 
             Trace.WriteLine("Ligne éxécutée APRÈS le changement de page");
         }
+
+        */
     }
 }

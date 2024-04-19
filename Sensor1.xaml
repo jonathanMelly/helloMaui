@@ -12,24 +12,32 @@
     
     
     <VerticalStackLayout>
-        <Frame BorderColor="Red">
+        <Frame BorderColor="Red" Margin="5,5,5,0">
             <StackLayout>
-            <Label 
-                Text="{Binding SensorValue}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding SensorValue, StringFormat='Données du capteur: {0}'}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
 
-            <Button Text="toggle" Command="{Binding EnableCommand}" />
+                <Button Text="Activer / Désactiver l’accéléromètre" Command="{Binding EnableCommand}" />
 
-            <BoxView Color="{Binding CancelColor}" IsVisible="{Binding Threshold}" HeightRequest="200" WidthRequest="200" />
+                <HorizontalStackLayout Margin="0,0,10,0">
+                    <Label Text="on" IsVisible="{Binding Enabled}" />
+                    <Label Text="off" IsVisible="{Binding Disabled}" />
+                </HorizontalStackLayout>
+                
+                <BoxView Margin="0,10,0,0" Color="{Binding CancelColor}" HeightRequest="200" WidthRequest="200" />
 
-            <Slider Value="{Binding Threshold}" Minimum="-10" Maximum="10"  />
-            <Label Text="{Binding Threshold}" />
+                <HorizontalStackLayout Margin="0,15,0,0">
+                    <Label Text="{Binding Threshold,StringFormat='Seuil: {0}'}" />
+                    <Slider  Value="{Binding Threshold, Mode=TwoWay}" Minimum="-10" Maximum="10" WidthRequest="150"/>
+                </HorizontalStackLayout>
 
-            <Label Margin="0,30,0,0" Text="{Binding Speed}" />
+
+                <Label Margin="0,30,0,0" Text="{Binding Acceleration,StringFormat='Acceleration: {0}'}" />
             </StackLayout>
         </Frame>
-        <Frame BorderColor="Green">
+        <Frame BorderColor="Green" Margin="5,10,5,0">
             <StackLayout>
             <Switch IsToggled="{Binding Toggled}" />
             <BoxView Color="{Binding ShakeColor}" WidthRequest="150" HeightRequest="150" />
